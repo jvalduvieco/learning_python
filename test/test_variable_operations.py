@@ -26,6 +26,19 @@ class TestVariableOperations(unittest.TestCase):
         self.assertEqual(5, an_integer + 2)
         self.assertEqual(4.0, a_float + a_float)
 
+    def test_boolean_variables_can_be_combined_using_logical_operators(self):
+        i_am_true = True
+        i_am_false = False
+        self.assertTrue(i_am_true and i_am_true)
+        self.assertFalse(i_am_false and i_am_false)
+        self.assertFalse(i_am_true and i_am_false)
+        self.assertTrue(i_am_true and not i_am_false)
+        self.assertTrue(not i_am_false and not i_am_false)
+        self.assertTrue(i_am_true or i_am_false)
+        self.assertFalse(i_am_false or i_am_false)
+        self.assertTrue(i_am_false or not i_am_false)
+        self.assertTrue(i_am_true is True)
+        self.assertTrue(i_am_false is False)
 
 
 if __name__ == '__main__':

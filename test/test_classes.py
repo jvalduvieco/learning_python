@@ -26,6 +26,12 @@ class AClassWithPrivateProperties:
         return self.__i_am_private
 
 
+class AClassWithInitializationParameters:
+    def __init__(self, a_parameter, another_parameter):
+        self.a_property = a_parameter
+        self.another_property = another_parameter
+
+
 class TestClasses(unittest.TestCase):
     def test_classes_can_contain_properties(self):
         an_object = AnotherClass()
@@ -34,6 +40,11 @@ class TestClasses(unittest.TestCase):
     def test_a_class_can_contain_methods(self):
         a_reference = AnotherClass()
         self.assertEqual(9, a_reference.a_pure_method(3))
+
+    def test_class_initialization_can_be_parameterized(self):
+        a_reference = AClassWithInitializationParameters(a_parameter="nice", another_parameter="super_nice")
+        self.assertEqual(a_reference.a_property, "nice")
+        self.assertEqual(a_reference.another_property, "super_nice")
 
     def test_methods_that_do_not_depend_on_properties_are_pure_and_should_be_declared_static(self):
         a_reference = AnotherClass()
@@ -61,6 +72,8 @@ class TestClasses(unittest.TestCase):
         first_object = AnotherClass()
         second_object = AnotherClass()
         self.assertEqual(first_object.__class__, second_object.__class__)
+        self.assertTrue(first_object.__class__ is AnotherClass)
+        self.assertTrue(second_object.__class__ is AnotherClass)
 
     def test_classes_might_have_private_data(self):
         an_object = AClassWithPrivateProperties()

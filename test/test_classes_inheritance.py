@@ -32,11 +32,11 @@ class AChildWithMultipleParents(Parent, AnotherParent):
 
 class AContractClass(ABC):
     @abc.abstractmethod
-    def class_should_do_this(self):
+    def should_do_this(self):
         pass
 
     @abc.abstractmethod
-    def class_should_do_that(self):
+    def should_do_that(self):
         pass
 
 
@@ -76,14 +76,35 @@ class ClassInheritance(unittest.TestCase):
 
     def test_contract_classes_must_be_implemented_by_another_class(self):
         class AContractImplementation(AContractClass):
-            def class_should_do_this(self):
+            def should_do_this(self):
                 return 1
 
-            def class_should_do_that(self):
+            def should_do_that(self):
                 return 2
 
         an_object = AContractImplementation()
-        self.assertEqual(1, an_object.class_should_do_this())
+        self.assertEqual(1, an_object.should_do_this())
+
+    def test_contract_classes_can_be_implemented_by_several_classes(self):
+        class AContractImplementation(AContractClass):
+            def should_do_this(self):
+                return 1
+
+            def should_do_that(self):
+                return 2
+
+        class AnotherContractImplementation(AContractClass):
+            def should_do_this(self):
+                return 3 - 2
+
+            def should_do_that(self):
+                return 1 * 2
+
+        an_object = AContractImplementation()
+        another_object = AnotherContractImplementation()
+
+        self.assertEqual(1, an_object.should_do_this())
+        self.assertEqual(1, another_object.should_do_this())
 
 
 if __name__ == '__main__':

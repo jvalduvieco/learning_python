@@ -13,3 +13,7 @@ This project is the outcome of a journey we started with a friend to learn pytho
 * Recap and iterate FizzBuzz
 * red, green, blue
 * IDE Refactors
+
+## Day 3
+* github PR and branching
+* logical operators
