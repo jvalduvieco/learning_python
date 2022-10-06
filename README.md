@@ -1,11 +1,11 @@
 # Learning python
-This project is the outcome of a journey we started with a friend by learning python.
+This project is the outcome of a journey we started with a friend to learn python.
 
 ## Day 1
 * variables
 * variable operations
 * functions
-* Exercices:
+* Exercises:
   * Implement a function that sums the elements of two zipped lists
   * Start FizzBuzz - https://codingdojo.org/kata/FizzBuzz/
 
